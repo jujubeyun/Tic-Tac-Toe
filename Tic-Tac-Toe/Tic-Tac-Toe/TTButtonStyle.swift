@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-struct TTTButtonStyle: ViewModifier {
+struct TTButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .buttonStyle(.bordered)
             .controlSize(.large)
             .tint(.indigo)
             .font(.title2)
-            .padding()
     }
 }

@@ -11,7 +11,7 @@
 		6B062A182C2A47DD000DE2A4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B062A172C2A47DD000DE2A4 /* HomeView.swift */; };
 		6B062A1A2C2A47DE000DE2A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B062A192C2A47DE000DE2A4 /* Assets.xcassets */; };
 		6B062A1D2C2A47DE000DE2A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B062A1C2C2A47DE000DE2A4 /* Preview Assets.xcassets */; };
-		6B062A242C2BDF7F000DE2A4 /* TTTButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B062A232C2BDF7F000DE2A4 /* TTTButtonStyle.swift */; };
+		6B062A242C2BDF7F000DE2A4 /* TTButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B062A232C2BDF7F000DE2A4 /* TTButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +20,7 @@
 		6B062A172C2A47DD000DE2A4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		6B062A192C2A47DE000DE2A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B062A1C2C2A47DE000DE2A4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		6B062A232C2BDF7F000DE2A4 /* TTTButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTTButtonStyle.swift; sourceTree = "<group>"; };
+		6B062A232C2BDF7F000DE2A4 /* TTButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 			children = (
 				6B062A152C2A47DD000DE2A4 /* Tic_Tac_ToeApp.swift */,
 				6B062A172C2A47DD000DE2A4 /* HomeView.swift */,
-				6B062A232C2BDF7F000DE2A4 /* TTTButtonStyle.swift */,
+				6B062A232C2BDF7F000DE2A4 /* TTButtonStyle.swift */,
 				6B062A192C2A47DE000DE2A4 /* Assets.xcassets */,
 				6B062A1B2C2A47DE000DE2A4 /* Preview Content */,
 			);
@@ -142,7 +142,7 @@
 			files = (
 				6B062A182C2A47DD000DE2A4 /* HomeView.swift in Sources */,
 				6B062A162C2A47DD000DE2A4 /* Tic_Tac_ToeApp.swift in Sources */,
-				6B062A242C2BDF7F000DE2A4 /* TTTButtonStyle.swift in Sources */,
+				6B062A242C2BDF7F000DE2A4 /* TTButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
