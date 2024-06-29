@@ -32,53 +32,12 @@ struct HomeView: View {
             Text("👾 Tiki Taki 👾")
                 .font(.system(size: 50, weight: .bold))
             
-            HStack {
-                Button {
-                    selectedPlayer = .player1
-                } label: {
-                    Image(systemName: player1Symbol)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .tint(Color(.label))
-                        .fontWeight(.medium)
-                        .padding()
-                        .frame(width: 120, height: 150)
-                }
-                .background(RoundedRectangle(cornerRadius: 10)
-                    .stroke(lineWidth: 3))
-                
-                
-                Text("vs")
-                    .font(.title)
-                    .padding()
-                
-                Button {
-                    selectedPlayer = .player2
-                } label: {
-                    Image(systemName: player2Symbol)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .tint(Color(.label))
-                        .fontWeight(.medium)
-                        .padding()
-                        .frame(width: 120, height: 150)
-                }
-                .background(RoundedRectangle(cornerRadius: 10)
-                    .stroke(lineWidth: 3))
-            }
+            PlayerView(selectedPlayer: $selectedPlayer,
+                      player1Symbol: $player1Symbol,
+                      player2Symbol: $player2Symbol)
             
-            Toggle("Single Player", isOn: $isSinglePlayer)
-                .tint(.indigo)
-                .font(.title3)
-                .padding()
-            
-            Picker("Difficulty", selection: $selectedDifficulty) {
-                ForEach(Difficulty.allCases) { difficulty in
-                    Text(difficulty.rawValue.capitalized)
-                }
-            }
-            .pickerStyle(.segmented)
-            .disabled(!isSinglePlayer)
+            OptionView(isSinglePlayer: $isSinglePlayer,
+                       selectedDifficulty: $selectedDifficulty)
             
             Spacer()
             
@@ -88,7 +47,6 @@ struct HomeView: View {
                 Text("Game Start").frame(width: 280)
             }.modifier(TTButtonStyle())
         }
-        .padding()
         .sheet(item: $selectedPlayer) { player in
             switch player {
             case .player1:
@@ -99,6 +57,7 @@ struct HomeView: View {
                     .presentationDetents([.fraction(0.43)])
             }
         }
+        .padding()
     }
 }
 
