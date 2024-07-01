@@ -9,24 +9,25 @@ import SwiftUI
 
 struct OptionView: View {
     
-    @Binding var isSinglePlayer: Bool
-    @Binding var selectedDifficulty: Difficulty
+    @Environment(GameSetting.self) private var gameSetting
     
     var body: some View {
-        Toggle("Single Player", isOn: $isSinglePlayer)
+        @Bindable var setting = gameSetting
+        
+        Toggle("Single Player", isOn: $setting.isSinglePlayer)
             .tint(.indigo).font(.title3).padding()
         
-        Picker("Difficulty", selection: $selectedDifficulty) {
+        Picker("Difficulty", selection: $setting.selectedDifficulty) {
             ForEach(Difficulty.allCases) { difficulty in
                 Text(difficulty.rawValue.capitalized)
             }
         }
         .pickerStyle(.segmented)
-        .disabled(!isSinglePlayer)
+        .disabled(!setting.isSinglePlayer)
     }
 }
 
 #Preview {
-    OptionView(isSinglePlayer: .constant(true),
-               selectedDifficulty: .constant(.easy))
+    OptionView()
+        .environment(GameSetting())
 }

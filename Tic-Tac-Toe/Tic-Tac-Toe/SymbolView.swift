@@ -14,7 +14,7 @@ struct SymbolView: View {
     let columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 5)
     
     @Binding var selectedPlayer: Player?
-    @Binding var symbol: String
+    @Environment(GameSetting.self) private var gameSetting
     
     var body: some View {
         VStack {
@@ -36,7 +36,12 @@ struct SymbolView: View {
                 LazyVGrid(columns: columns, spacing: 24) {
                     ForEach(symbols, id: \.self) { symbol in
                         Button {
-                            self.symbol = symbol
+                            switch selectedPlayer {
+                            case .player1:
+                                gameSetting.player1Symbol = symbol
+                            default:
+                                gameSetting.player2Symbol = symbol
+                            }
                         } label: {
                             Image(systemName: symbol)
                                 .resizable()
@@ -56,7 +61,8 @@ struct SymbolView: View {
 
 
 #Preview {
-    SymbolView(selectedPlayer: .constant(.player1), symbol: .constant("xmark"))
+    SymbolView(selectedPlayer: .constant(.player1))
+        .environment(GameSetting())
 }
 
 

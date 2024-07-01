@@ -10,15 +10,14 @@ import SwiftUI
 struct PlayerView: View {
     
     @Binding var selectedPlayer: Player?
-    @Binding var player1Symbol: String
-    @Binding var player2Symbol: String
+    @Environment(GameSetting.self) private var gameSetting
     
     var body: some View {
         HStack {
             Button {
                 selectedPlayer = .player1
             } label: {
-                PlayerImage(imageName: player1Symbol)
+                PlayerImage(imageName: gameSetting.player1Symbol)
             }
             .overlay (
                 RoundedRectangle(cornerRadius: 10)
@@ -32,7 +31,7 @@ struct PlayerView: View {
             Button {
                 selectedPlayer = .player2
             } label: {
-                PlayerImage(imageName: player2Symbol)
+                PlayerImage(imageName: gameSetting.player2Symbol)
             }
             .overlay (
                 RoundedRectangle(cornerRadius: 10)
@@ -43,9 +42,8 @@ struct PlayerView: View {
 }
 
 #Preview {
-    PlayerView(selectedPlayer: .constant(.player1),
-               player1Symbol: .constant("xmark"),
-               player2Symbol: .constant("circle"))
+    PlayerView(selectedPlayer: .constant(.player1))
+        .environment(GameSetting())
 }
 
 struct PlayerImage: View {

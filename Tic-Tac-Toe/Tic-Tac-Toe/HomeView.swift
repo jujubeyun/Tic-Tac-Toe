@@ -18,17 +18,14 @@ struct HomeView: View {
             Text("👾 Tiki Taki 👾")
                 .font(.system(size: 50, weight: .bold))
             
-            PlayerView(selectedPlayer: $vm.selectedPlayer,
-                       player1Symbol: $vm.player1Symbol,
-                       player2Symbol: $vm.player2Symbol)
+            PlayerView(selectedPlayer: $vm.selectedPlayer)
             
-            OptionView(isSinglePlayer: $vm.isSinglePlayer,
-                       selectedDifficulty: $vm.selectedDifficulty)
+            OptionView()
             
             Spacer()
             
             Button {
-                
+                vm.isPlaying = true
             } label: {
                 Text("Game Start").frame(width: 280)
             }.modifier(TTButtonStyle())
@@ -36,14 +33,15 @@ struct HomeView: View {
         .sheet(item: $vm.selectedPlayer) { player in
             switch player {
             case .player1:
-                SymbolView(selectedPlayer: $vm.selectedPlayer, 
-                           symbol: $vm.player1Symbol)
+                SymbolView(selectedPlayer: $vm.selectedPlayer)
                     .presentationDetents([.fraction(0.43)])
             case .player2:
-                SymbolView(selectedPlayer: $vm.selectedPlayer, 
-                           symbol: $vm.player2Symbol)
+                SymbolView(selectedPlayer: $vm.selectedPlayer)
                     .presentationDetents([.fraction(0.43)])
             }
+        }
+        .fullScreenCover(isPresented: $vm.isPlaying) {
+            GameView()
         }
         .padding()
     }
@@ -51,4 +49,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environment(GameSetting())
 }

@@ -12,13 +12,16 @@ struct GameView: View {
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
     
     @State var moves: [String?] = Array(repeating: nil, count: 9)
+    @Environment(GameSetting.self) private var gameSetting
     
     var body: some View {
         VStack {
             
             HStack(spacing: 30) {
-                ScoreView(symbol: "xmark", score: 0)
-                ScoreView(symbol: "circle", score: 0)
+                ScoreView(symbol: gameSetting.player1Symbol,
+                          score: 3)
+                ScoreView(symbol: gameSetting.player2Symbol, 
+                          score: 0)
             }
             
             LazyVGrid(columns: columns) {
@@ -31,12 +34,13 @@ struct GameView: View {
                         
                         Image(systemName: moves[i] ?? "")
                             .resizable()
+                            .aspectRatio(contentMode: .fit)
                             .fontWeight(.medium)
                             .padding(24)
                     }
                     .onTapGesture {
                         let isEven = i % 2 == 0
-                        moves[i] = isEven ? "xmark" : "circle"
+                        moves[i] = isEven ? gameSetting.player1Symbol : gameSetting.player2Symbol
                     }
                 }
             }
@@ -47,6 +51,7 @@ struct GameView: View {
 
 #Preview {
     GameView()
+        .environment(GameSetting())
 }
 
 struct ScoreView: View {
@@ -59,7 +64,6 @@ struct ScoreView: View {
             Image(systemName: symbol)
                 .font(.title)
                 .bold()
-            
             
             Text(score == 0 ? "-" : "\(score)")
                 .font(.title2)
