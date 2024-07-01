@@ -18,8 +18,11 @@ struct GameView: View {
             LazyVGrid(columns: columns) {
                 ForEach(0..<9) { i in
                     ZStack {
-                        Color(.secondarySystemBackground)
+                        Rectangle()
                             .aspectRatio(contentMode: .fit)
+                            .foregroundStyle(.indigo.gradient)
+                            .opacity(0.3)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                         
                         Image(systemName: moves[i] ?? "")
                             .resizable()
