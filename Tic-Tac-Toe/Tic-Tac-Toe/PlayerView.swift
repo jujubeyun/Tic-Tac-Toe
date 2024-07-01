@@ -18,16 +18,12 @@ struct PlayerView: View {
             Button {
                 selectedPlayer = .player1
             } label: {
-                Image(systemName: player1Symbol)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .tint(Color(.label))
-                    .fontWeight(.medium)
-                    .padding()
-                    .frame(width: 120, height: 150)
+                PlayerImage(imageName: player1Symbol)
             }
-            .background(RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth: 3))
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 3)
+            )
             
             Text("vs")
                 .font(.title)
@@ -36,16 +32,12 @@ struct PlayerView: View {
             Button {
                 selectedPlayer = .player2
             } label: {
-                Image(systemName: player2Symbol)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .tint(Color(.label))
-                    .fontWeight(.medium)
-                    .padding()
-                    .frame(width: 120, height: 150)
+                PlayerImage(imageName: player2Symbol)
             }
-            .background(RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth: 3))
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 3)
+            )
         }
     }
 }
@@ -54,4 +46,19 @@ struct PlayerView: View {
     PlayerView(selectedPlayer: .constant(.player1),
                player1Symbol: .constant("xmark"),
                player2Symbol: .constant("circle"))
+}
+
+struct PlayerImage: View {
+    
+    let imageName: String
+    
+    var body: some View {
+        Image(systemName: imageName)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .tint(Color(.label))
+            .fontWeight(.medium)
+            .padding()
+            .frame(width: 120, height: 150)
+    }
 }
