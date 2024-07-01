@@ -20,7 +20,7 @@ struct PlayerView: View {
             } label: {
                 PlayerImage(imageName: player1Symbol)
             }
-            .background(
+            .overlay (
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(lineWidth: 3)
             )
@@ -34,7 +34,7 @@ struct PlayerView: View {
             } label: {
                 PlayerImage(imageName: player2Symbol)
             }
-            .background(
+            .overlay (
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(lineWidth: 3)
             )
