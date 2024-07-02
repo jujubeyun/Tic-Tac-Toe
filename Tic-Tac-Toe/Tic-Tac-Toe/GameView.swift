@@ -19,8 +19,8 @@ struct GameView: View {
             
             HStack(spacing: 30) {
                 ScoreView(symbol: gameSetting.player1Symbol,
-                          score: 3)
-                ScoreView(symbol: gameSetting.player2Symbol, 
+                          score: 0)
+                ScoreView(symbol: gameSetting.player2Symbol,
                           score: 0)
             }
             
@@ -36,7 +36,7 @@ struct GameView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .fontWeight(.medium)
-                            .padding(24)
+                            .frame(width: 60)
                     }
                     .onTapGesture {
                         let isEven = i % 2 == 0
