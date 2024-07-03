@@ -16,6 +16,8 @@
 		6B062A2A2C2D29A0000DE2A4 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B062A292C2D29A0000DE2A4 /* XDismissButton.swift */; };
 		6B062A2C2C2D401A000DE2A4 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B062A2B2C2D401A000DE2A4 /* GameView.swift */; };
 		6B26024B2C329B5000C8F64C /* GameSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B26024A2C329B5000C8F64C /* GameSetting.swift */; };
+		6B2602512C33D10000C8F64C /* GameSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2602502C33D10000C8F64C /* GameSquareView.swift */; };
+		6B2602532C33D13A00C8F64C /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2602522C33D13A00C8F64C /* ScoreView.swift */; };
 		6B2CC00C2C2D620800981F2F /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CC00B2C2D620800981F2F /* PlayerView.swift */; };
 		6B2CC00E2C2D626C00981F2F /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CC00D2C2D626C00981F2F /* OptionView.swift */; };
 		6B2CC0102C2F99C800981F2F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CC00F2C2F99C800981F2F /* HomeViewModel.swift */; };
@@ -32,6 +34,8 @@
 		6B062A292C2D29A0000DE2A4 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 		6B062A2B2C2D401A000DE2A4 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		6B26024A2C329B5000C8F64C /* GameSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetting.swift; sourceTree = "<group>"; };
+		6B2602502C33D10000C8F64C /* GameSquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSquareView.swift; sourceTree = "<group>"; };
+		6B2602522C33D13A00C8F64C /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		6B2CC00B2C2D620800981F2F /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		6B2CC00D2C2D626C00981F2F /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		6B2CC00F2C2F99C800981F2F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 				6B2CC00D2C2D626C00981F2F /* OptionView.swift */,
 				6B062A272C2C0D3E000DE2A4 /* SymbolView.swift */,
 				6B062A292C2D29A0000DE2A4 /* XDismissButton.swift */,
+				6B2602522C33D13A00C8F64C /* ScoreView.swift */,
+				6B2602502C33D10000C8F64C /* GameSquareView.swift */,
 				6B062A2B2C2D401A000DE2A4 /* GameView.swift */,
 				6B062A232C2BDF7F000DE2A4 /* TTButtonStyle.swift */,
 				6B062A192C2A47DE000DE2A4 /* Assets.xcassets */,
@@ -166,11 +172,13 @@
 				6B2CC0102C2F99C800981F2F /* HomeViewModel.swift in Sources */,
 				6B062A182C2A47DD000DE2A4 /* HomeView.swift in Sources */,
 				6B2CC00C2C2D620800981F2F /* PlayerView.swift in Sources */,
+				6B2602532C33D13A00C8F64C /* ScoreView.swift in Sources */,
 				6B062A162C2A47DD000DE2A4 /* Tic_Tac_ToeApp.swift in Sources */,
 				6B062A242C2BDF7F000DE2A4 /* TTButtonStyle.swift in Sources */,
 				6B062A2C2C2D401A000DE2A4 /* GameView.swift in Sources */,
 				6B062A2A2C2D29A0000DE2A4 /* XDismissButton.swift in Sources */,
 				6B2CC00E2C2D626C00981F2F /* OptionView.swift in Sources */,
+				6B2602512C33D10000C8F64C /* GameSquareView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
