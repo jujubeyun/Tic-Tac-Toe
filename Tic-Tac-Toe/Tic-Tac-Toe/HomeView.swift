@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+enum Player: String, Identifiable {
+    var id: String { rawValue }
+    case player1, player2
+}
+
 struct HomeView: View {
     
-    @Bindable var vm = HomeViewModel()
+    @State var selectedPlayer: Player?
+    @State var isPlaying = false
     
     var body: some View {
         VStack {
@@ -18,29 +24,29 @@ struct HomeView: View {
             Text("👾 Tiki Taki 👾")
                 .font(.system(size: 50, weight: .bold))
             
-            PlayerView(selectedPlayer: $vm.selectedPlayer)
+            PlayerView(selectedPlayer: $selectedPlayer)
             
             OptionView()
             
             Spacer()
             
             Button {
-                vm.isPlaying = true
+                isPlaying = true
             } label: {
                 Text("Game Start").frame(width: 280)
             }.modifier(TTButtonStyle())
         }
-        .sheet(item: $vm.selectedPlayer) { player in
+        .sheet(item: $selectedPlayer) { player in
             switch player {
             case .player1:
-                SymbolView(selectedPlayer: $vm.selectedPlayer)
+                SymbolView(selectedPlayer: $selectedPlayer)
                     .presentationDetents([.fraction(0.43)])
             case .player2:
-                SymbolView(selectedPlayer: $vm.selectedPlayer)
+                SymbolView(selectedPlayer: $selectedPlayer)
                     .presentationDetents([.fraction(0.43)])
             }
         }
-        .fullScreenCover(isPresented: $vm.isPlaying) {
+        .fullScreenCover(isPresented: $isPlaying) {
             GameView()
         }
         .padding()

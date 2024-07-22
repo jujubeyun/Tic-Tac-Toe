@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct Tic_Tac_ToeApp: App {
     
-    @State private var gameSetting = GameSetting()
+    let gameSetting = GameSetting()
     
     var body: some Scene {
         WindowGroup {

@@ -9,8 +9,6 @@ import SwiftUI
 
 struct GameView: View {
     
-    let columns = Array(repeating: GridItem(.flexible()), count: 3)
-    
     @State var moves: [String?] = Array(repeating: nil, count: 9)
     @Environment(GameSetting.self) private var gameSetting
     
@@ -24,7 +22,7 @@ struct GameView: View {
                           score: 0)
             }
             
-            LazyVGrid(columns: columns) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3)) {
                 ForEach(0..<9) { i in
                     ZStack {
                         GameSquareView(imageName: moves[i] ?? "")
