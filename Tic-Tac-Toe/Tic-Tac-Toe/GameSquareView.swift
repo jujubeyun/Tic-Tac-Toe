@@ -9,7 +9,17 @@ import SwiftUI
 
 struct GameSquareView: View {
     
-    let imageName: String
+    @Environment(GameSetting.self) private var gameSetting
+    
+    let move: Move?
+    
+    var imageName: String {
+        if move == nil {
+            return ""
+        } else {
+            return move?.player == .player1 ? gameSetting.player1Symbol : gameSetting.player2Symbol
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -29,6 +39,7 @@ struct GameSquareView: View {
 
 
 #Preview {
-    GameSquareView(imageName: "xmark")
+    GameSquareView(move: nil)
+        .environment(GameSetting())
 }
 

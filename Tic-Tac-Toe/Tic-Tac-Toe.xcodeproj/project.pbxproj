@@ -20,6 +20,7 @@
 		6B2602532C33D13A00C8F64C /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2602522C33D13A00C8F64C /* ScoreView.swift */; };
 		6B2CC00C2C2D620800981F2F /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CC00B2C2D620800981F2F /* PlayerView.swift */; };
 		6B2CC00E2C2D626C00981F2F /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CC00D2C2D626C00981F2F /* OptionView.swift */; };
+		6BA3092C2C4E34A7005EBC85 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA3092B2C4E34A7005EBC85 /* Alerts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		6B2602522C33D13A00C8F64C /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		6B2CC00B2C2D620800981F2F /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		6B2CC00D2C2D626C00981F2F /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
+		6BA3092B2C4E34A7005EBC85 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				6B2602522C33D13A00C8F64C /* ScoreView.swift */,
 				6B2602502C33D10000C8F64C /* GameSquareView.swift */,
 				6B062A2B2C2D401A000DE2A4 /* GameView.swift */,
+				6BA3092B2C4E34A7005EBC85 /* Alerts.swift */,
 				6B062A232C2BDF7F000DE2A4 /* TTButtonStyle.swift */,
 				6B062A192C2A47DE000DE2A4 /* Assets.xcassets */,
 				6B062A1B2C2A47DE000DE2A4 /* Preview Content */,
@@ -174,6 +177,7 @@
 				6B062A2C2C2D401A000DE2A4 /* GameView.swift in Sources */,
 				6B062A2A2C2D29A0000DE2A4 /* XDismissButton.swift in Sources */,
 				6B2CC00E2C2D626C00981F2F /* OptionView.swift in Sources */,
+				6BA3092C2C4E34A7005EBC85 /* Alerts.swift in Sources */,
 				6B2602512C33D10000C8F64C /* GameSquareView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
