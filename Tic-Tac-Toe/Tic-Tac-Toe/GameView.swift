@@ -98,7 +98,7 @@ struct GameView: View {
         isGameBoardDisabled = true
         
         if gameSetting.isSinglePlayer {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 isGameBoardDisabled = false
                 let computerPosition = determineComputerMovePosition()
                 moves[computerPosition] = Move(player: .player2, boardIndex: computerPosition)
@@ -125,47 +125,49 @@ struct GameView: View {
     }
     
     func determineComputerMovePosition() -> Int {
-        // If AI can win, then win
-        let computerMoves = moves.compactMap { $0 }.filter { $0.player == .player2 }
-        let computerPositions = Set(computerMoves.map { $0.boardIndex })
-        
-        for pattern in winPatterns {
-            let winPositions = pattern.subtracting(computerPositions)
-            
-            if winPositions.count == 1 {
-                let isAvailable = !isSquareOccupied(forIndex: winPositions.first!)
-                if isAvailable { return winPositions.first! }
+        // If computer can win, then win
+        if gameSetting.selectedDifficulty.level >= 2 {
+            if let position = getFinalPiece(for: .player2) {
+                return position
             }
         }
         
-//         If AI can't win, then block
-        let humanMoves = moves.compactMap { $0 }.filter { $0.player == .player1 }
-        let humanPositions = Set(humanMoves.map { $0.boardIndex })
-        
-        for pattern in winPatterns {
-            let winPositions = pattern.subtracting(humanPositions)
+        if gameSetting.selectedDifficulty.level == 3 {
+            // If human can win, then block
+            if let position = getFinalPiece(for: .player1) {
+                return position
+            }
             
-            if winPositions.count == 1 {
-                let isAvailable = !isSquareOccupied(forIndex: winPositions.first!)
-                if isAvailable { return winPositions.first! }
+            // If computer can't block, then take middle square
+            let centerSquare = 4
+            if !isSquareOccupied(forIndex: centerSquare) {
+                return centerSquare
             }
         }
-        
-//         If AI can't block, then take middle square
-        let centerSquare = 4
-        if !isSquareOccupied(forIndex: centerSquare) {
-            return centerSquare
-        }
-        
-        
+                
         // If AI can't take middle square, take random available square
         var movePosition = Int.random(in: 0..<9)
-        
         while isSquareOccupied(forIndex: movePosition) {
             movePosition = Int.random(in: 0..<9)
         }
         
         return movePosition
+    }
+    
+    func getFinalPiece(for player: Player) -> Int? {
+        let playerMoves = moves.compactMap { $0 }.filter { $0.player == player }
+        let playerPositions = Set(playerMoves.map { $0.boardIndex })
+        
+        for pattern in winPatterns {
+            let winPositions = pattern.subtracting(playerPositions)
+            
+            if winPositions.count == 1 {
+                let isAvailable = !isSquareOccupied(forIndex: winPositions.first!)
+                if isAvailable { return winPositions.first! }
+            }
+        }
+        
+        return nil
     }
     
     func isSquareOccupied(forIndex index: Int) -> Bool {

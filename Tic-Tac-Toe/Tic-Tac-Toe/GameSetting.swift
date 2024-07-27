@@ -9,6 +9,18 @@ import Foundation
 
 enum Difficulty: String, Identifiable, CaseIterable {
     var id: Self { self }
+    
+    var level: Int {
+        switch self {
+        case .easy:
+            1
+        case .medium:
+            2
+        case .hard:
+            3
+        }
+    }
+    
     case easy, medium, hard
 }
 
