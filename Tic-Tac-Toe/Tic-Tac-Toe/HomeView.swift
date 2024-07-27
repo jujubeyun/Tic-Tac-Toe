@@ -34,7 +34,7 @@ struct HomeView: View {
                 isPlaying = true
             } label: {
                 Text("Game Start").frame(width: 280)
-            }.modifier(TTButtonStyle())
+            }.modifier(GameButtonStyle())
         }
         .sheet(item: $selectedPlayer) { player in
             switch player {
@@ -47,7 +47,7 @@ struct HomeView: View {
             }
         }
         .fullScreenCover(isPresented: $isPlaying) {
-            GameView()
+            GameView(isPlaying: $isPlaying, alert: .draw)
         }
         .padding()
     }

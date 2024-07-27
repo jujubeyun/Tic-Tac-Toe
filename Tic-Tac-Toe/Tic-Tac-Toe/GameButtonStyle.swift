@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TTButtonStyle: ViewModifier {
+struct GameButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .buttonStyle(.bordered)

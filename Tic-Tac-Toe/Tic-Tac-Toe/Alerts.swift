@@ -5,26 +5,32 @@
 //  Created by Juhyun Yun on 7/22/24.
 //
 
-import SwiftUI
+import Foundation
 
-struct AlertItem: Identifiable {
-    let id = UUID()
-    var title: Text
-    var message: Text
-    var buttonTitle: Text
-}
-
-struct AlertContext {
-    static let player1Win   = AlertItem(title: Text("Player 1 Win!"),
-                                 message: Text("Player 1 is smarter"),
-                                 buttonTitle: Text("OK"))
+enum AlertType {
+    case win(player: Player), draw, reset, exit
     
-    static let player2Win   = AlertItem(title: Text("Player 2 Win!"),
-                                 message: Text("Player 2 is smarter."),
-                                 buttonTitle: Text("OK"))
+    var title: String {
+        switch self {
+        case .win(let player):
+            "\(player.rawValue.capitalized) Win"
+        case .draw:
+            "Draw"
+        case .reset:
+            "Reset Game"
+        case .exit:
+            "Exit Game"
+        }
+    }
     
-    static let draw         = AlertItem(title: Text("Draw"),
-                                 message: Text("What a battle of wits we have here..."),
-                                 buttonTitle: Text("Try Again"))
+    var message: String {
+        switch self {
+        case .win(let player):
+            "\(player.rawValue.capitalized) is so smart!"
+        case .draw:
+            "What a battle of wits we have here.."
+        case .reset, .exit:
+            "Are you sure?"
+        }
+    }
 }
-

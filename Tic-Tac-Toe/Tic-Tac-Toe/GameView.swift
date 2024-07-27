@@ -15,8 +15,10 @@ struct Move {
 struct GameView: View {
     
     @Environment(GameSetting.self) private var gameSetting
+    @Binding var isPlaying: Bool
     @State var moves: [Move?] = Array(repeating: nil, count: 9)
-    @State var alertItem: AlertItem?
+    @State var alert: AlertType
+    @State var isShowingAlert = false
     @State var player1Score = 0
     @State var player2Score = 0
     @State var isGameBoardDisabled = false
@@ -44,9 +46,32 @@ struct GameView: View {
             }
             .disabled(isGameBoardDisabled)
             .padding()
-            .alert(item: $alertItem) { alertItem in
-                Alert(title: alertItem.title, message: alertItem.message, dismissButton: .default(alertItem.buttonTitle, action: { resetGame() }))
+            
+            Button {
+                showAlert(alert: .reset)
+            } label: {
+                Text("Reset").frame(width: 280)
+            }.modifier(GameButtonStyle())
+            
+            Button {
+                showAlert(alert: .exit)
+            } label: {
+                Text("Exit").frame(width: 280)
+            }.modifier(GameButtonStyle())
+        }
+        .alert(alert.title, isPresented: $isShowingAlert, presenting: alert) { alert in
+            switch alert {
+            case .reset:
+                Button("OK") { resetGame() }
+                Button("Cancel", role: .cancel) {}
+            case .exit:
+                Button("OK") { isPlaying = false }
+                Button("Cancel", role: .cancel) {}
+            case .win, .draw:
+                Button("OK") { resetMoves() }
             }
+        } message: { alert in
+            Text(alert.message)
         }
     }
     
@@ -56,14 +81,17 @@ struct GameView: View {
         moves[position] = Move(player: player, boardIndex: position)
         
         if checkWinCondition(for: player) {
-            alertItem = AlertContext.player1Win
-            player1Score += player == .player1 ? 1 : 0
-            player2Score += player == .player2 ? 1 : 0
+            showAlert(alert: .win(player: player))
+            if player == .player1 {
+                player1Score += 1
+            } else {
+                player2Score += 1
+            }
             return
         }
         
         if checkForDraw() {
-            alertItem = AlertContext.draw
+            showAlert(alert: .draw)
             return
         }
         
@@ -76,19 +104,24 @@ struct GameView: View {
                 moves[computerPosition] = Move(player: .player2, boardIndex: computerPosition)
                 
                 if checkWinCondition(for: .player2) {
-                    alertItem = AlertContext.player2Win
+                    showAlert(alert: .win(player: .player2))
                     player2Score += 1
                     return
                 }
                 
                 if checkForDraw() {
-                    alertItem = AlertContext.draw
+                    showAlert(alert: .draw)
                     return
                 }
             }
         } else {
             isGameBoardDisabled = false
         }
+    }
+    
+    func showAlert(alert: AlertType) {
+        self.alert = alert
+        isShowingAlert = true
     }
     
     func determineComputerMovePosition() -> Int {
@@ -154,11 +187,17 @@ struct GameView: View {
     }
     
     func resetGame() {
+        resetMoves()
+        player1Score = 0
+        player2Score = 0
+    }
+    
+    func resetMoves() {
         moves = Array(repeating: nil, count: 9)
     }
 }
 
 #Preview {
-    GameView()
+    GameView(isPlaying: .constant(true), alert: .draw)
         .environment(GameSetting())
 }
