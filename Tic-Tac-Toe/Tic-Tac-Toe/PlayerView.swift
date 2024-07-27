@@ -19,7 +19,7 @@ struct PlayerView: View {
                 Button {
                     selectedPlayer = .player1
                 } label: {
-                    PlayerImage(imageName: gameSetting.player1Symbol)
+                    PlayerSymbol(imageName: gameSetting.player1Symbol)
                 }
                 .overlay (
                     RoundedRectangle(cornerRadius: 10)
@@ -37,7 +37,7 @@ struct PlayerView: View {
                 Button {
                     selectedPlayer = .player2
                 } label: {
-                    PlayerImage(imageName: gameSetting.player2Symbol)
+                    PlayerSymbol(imageName: gameSetting.player2Symbol)
                 }
                 .overlay (
                     RoundedRectangle(cornerRadius: 10)
@@ -55,7 +55,7 @@ struct PlayerView: View {
         .environment(GameSetting())
 }
 
-struct PlayerImage: View {
+struct PlayerSymbol: View {
     
     let imageName: String
     
