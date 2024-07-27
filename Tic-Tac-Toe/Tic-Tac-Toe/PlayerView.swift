@@ -14,29 +14,38 @@ struct PlayerView: View {
     
     var body: some View {
         HStack {
-            Button {
-                selectedPlayer = .player1
-            } label: {
-                PlayerImage(imageName: gameSetting.player1Symbol)
+            
+            VStack {
+                Button {
+                    selectedPlayer = .player1
+                } label: {
+                    PlayerImage(imageName: gameSetting.player1Symbol)
+                }
+                .overlay (
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 3)
+                )
+                
+                Text("Player 1")
             }
-            .overlay (
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(lineWidth: 3)
-            )
             
             Text("vs")
                 .font(.title)
                 .padding()
             
-            Button {
-                selectedPlayer = .player2
-            } label: {
-                PlayerImage(imageName: gameSetting.player2Symbol)
+            VStack {
+                Button {
+                    selectedPlayer = .player2
+                } label: {
+                    PlayerImage(imageName: gameSetting.player2Symbol)
+                }
+                .overlay (
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 3)
+                )
+                
+                Text("Player 2")
             }
-            .overlay (
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(lineWidth: 3)
-            )
         }
     }
 }
