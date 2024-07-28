@@ -22,15 +22,18 @@ struct GameView: View {
     @State var player1Score = 0
     @State var player2Score = 0
     @State var isGameBoardDisabled = false
+    @State var isPlayer1Turn = true
     
     let winPatterns: Set<Set<Int>> = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     
     var body: some View {
         VStack {
             HStack(spacing: 30) {
-                ScoreView(symbol: gameSetting.player1Symbol,
+                ScoreView(isPlayerTurn: isPlayer1Turn,
+                          symbol: gameSetting.player1Symbol,
                           score: player1Score)
-                ScoreView(symbol: gameSetting.player2Symbol,
+                ScoreView(isPlayerTurn: !isPlayer1Turn,
+                          symbol: gameSetting.player2Symbol,
                           score: player2Score)
             }
             
@@ -76,7 +79,9 @@ struct GameView: View {
     }
     
     func processPlayerMove(for position: Int) {
-        let player: Player = moves.compactMap { $0 }.count % 2 == 0 ? .player1 : .player2
+        let player: Player = isPlayer1Turn ? .player1 : .player2
+        isPlayer1Turn.toggle()
+        
         if isSquareOccupied(forIndex: position) { return }
         moves[position] = Move(player: player, boardIndex: position)
         
@@ -99,6 +104,7 @@ struct GameView: View {
         
         if gameSetting.isSinglePlayer {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                isPlayer1Turn.toggle()
                 isGameBoardDisabled = false
                 let computerPosition = determineComputerMovePosition()
                 moves[computerPosition] = Move(player: .player2, boardIndex: computerPosition)
@@ -196,6 +202,7 @@ struct GameView: View {
     
     func resetMoves() {
         moves = Array(repeating: nil, count: 9)
+        isPlayer1Turn = true
     }
 }
 

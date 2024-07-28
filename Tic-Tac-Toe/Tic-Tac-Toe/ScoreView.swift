@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ScoreView: View {
     
+    var isPlayerTurn: Bool
     var symbol: String
     var score: Int
     
@@ -24,11 +25,12 @@ struct ScoreView: View {
         .frame(width: 150, height: 50)
         .overlay {
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(.label), lineWidth: 3)
+                .stroke(Color(isPlayerTurn ? .systemIndigo : .label), lineWidth: 3)
+                .animation(.easeInOut, value: isPlayerTurn)
         }
     }
 }
 
 #Preview {
-    ScoreView(symbol: "xmark", score: 0)
+    ScoreView(isPlayerTurn: true, symbol: "xmark", score: 0)
 }
