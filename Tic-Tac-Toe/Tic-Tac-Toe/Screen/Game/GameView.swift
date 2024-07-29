@@ -80,11 +80,32 @@ struct GameView: View {
     
     func processPlayerMove(for position: Int) {
         let player: Player = isPlayer1Turn ? .player1 : .player2
-        isPlayer1Turn.toggle()
-        
         if isSquareOccupied(forIndex: position) { return }
         moves[position] = Move(player: player, boardIndex: position)
         
+        if checkGameOver(player: player) { return }
+        
+        isPlayer1Turn.toggle()
+        
+        if gameSetting.isSinglePlayer {
+            processComputerMove()
+        }
+    }
+    
+    func processComputerMove() {
+        isGameBoardDisabled = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            isGameBoardDisabled = false
+            let computerPosition = determineComputerMovePosition()
+            moves[computerPosition] = Move(player: .player2, boardIndex: computerPosition)
+            
+            if checkGameOver(player: .player2) { return }
+            
+            isPlayer1Turn = true
+        }
+    }
+    
+    func checkGameOver(player: Player) -> Bool {
         if checkWinCondition(for: player) {
             showAlert(alert: .win(player: player))
             if player == .player1 {
@@ -92,37 +113,15 @@ struct GameView: View {
             } else {
                 player2Score += 1
             }
-            return
+            return true
         }
         
         if checkForDraw() {
             showAlert(alert: .draw)
-            return
+            return true
         }
         
-        isGameBoardDisabled = true
-        
-        if gameSetting.isSinglePlayer {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                isPlayer1Turn.toggle()
-                isGameBoardDisabled = false
-                let computerPosition = determineComputerMovePosition()
-                moves[computerPosition] = Move(player: .player2, boardIndex: computerPosition)
-                
-                if checkWinCondition(for: .player2) {
-                    showAlert(alert: .win(player: .player2))
-                    player2Score += 1
-                    return
-                }
-                
-                if checkForDraw() {
-                    showAlert(alert: .draw)
-                    return
-                }
-            }
-        } else {
-            isGameBoardDisabled = false
-        }
+        return false
     }
     
     func showAlert(alert: AlertType) {

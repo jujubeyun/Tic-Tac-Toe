@@ -73,16 +73,8 @@
 			children = (
 				6B062A152C2A47DD000DE2A4 /* Tic_Tac_ToeApp.swift */,
 				6B26024A2C329B5000C8F64C /* GameSetting.swift */,
-				6B062A172C2A47DD000DE2A4 /* HomeView.swift */,
-				6B2CC00B2C2D620800981F2F /* PlayerView.swift */,
-				6B2CC00D2C2D626C00981F2F /* OptionView.swift */,
-				6B062A272C2C0D3E000DE2A4 /* SymbolView.swift */,
-				6B062A292C2D29A0000DE2A4 /* XDismissButton.swift */,
-				6B062A2B2C2D401A000DE2A4 /* GameView.swift */,
-				6B2602522C33D13A00C8F64C /* ScoreView.swift */,
-				6B2602502C33D10000C8F64C /* GameSquareView.swift */,
-				6BA3092B2C4E34A7005EBC85 /* Alerts.swift */,
-				6B062A232C2BDF7F000DE2A4 /* GameButtonStyle.swift */,
+				6B89CAA62C574BAB00845AC1 /* Screen */,
+				6B89CAA92C574BDC00845AC1 /* Utils */,
 				6B062A192C2A47DE000DE2A4 /* Assets.xcassets */,
 				6B062A1B2C2A47DE000DE2A4 /* Preview Content */,
 			);
@@ -95,6 +87,46 @@
 				6B062A1C2C2A47DE000DE2A4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6B89CAA62C574BAB00845AC1 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				6B89CAA82C574BB300845AC1 /* Home */,
+				6B89CAA72C574BAD00845AC1 /* Game */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		6B89CAA72C574BAD00845AC1 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				6B062A2B2C2D401A000DE2A4 /* GameView.swift */,
+				6B2602522C33D13A00C8F64C /* ScoreView.swift */,
+				6B2602502C33D10000C8F64C /* GameSquareView.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		6B89CAA82C574BB300845AC1 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6B062A172C2A47DD000DE2A4 /* HomeView.swift */,
+				6B2CC00B2C2D620800981F2F /* PlayerView.swift */,
+				6B2CC00D2C2D626C00981F2F /* OptionView.swift */,
+				6B062A272C2C0D3E000DE2A4 /* SymbolView.swift */,
+				6B062A292C2D29A0000DE2A4 /* XDismissButton.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		6B89CAA92C574BDC00845AC1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6BA3092B2C4E34A7005EBC85 /* Alerts.swift */,
+				6B062A232C2BDF7F000DE2A4 /* GameButtonStyle.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
