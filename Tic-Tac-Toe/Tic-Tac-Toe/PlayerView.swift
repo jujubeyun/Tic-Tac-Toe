@@ -32,6 +32,7 @@ struct PlayerView: View {
             Text("vs")
                 .font(.title)
                 .padding()
+                .offset(y: -16)
             
             VStack {
                 Button {

@@ -21,8 +21,10 @@ struct HomeView: View {
         VStack {
             Spacer()
             
-            Text("👾 Tiki Taki 👾")
-                .font(.system(size: 50, weight: .bold))
+            Text("👾 Tic Tac Toe 👾")
+                .font(.system(size: 45, weight: .bold))
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
             
             PlayerView(selectedPlayer: $selectedPlayer)
             
